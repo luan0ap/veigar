@@ -1,0 +1,19 @@
+{
+  "name": "veigar",
+  "version": "0.0.0",
+  "description": "A communicate website like [http://tieba.baidu.com/](http://tieba.baidu.com/)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papaface/veigar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/papaface/veigar/issues"
+  },
+  "homepage": "https://github.com/papaface/veigar#readme"
+}
