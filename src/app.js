@@ -28,6 +28,13 @@ fs.readdir(__dirname + '/router', (err, result) => {
 // static file
 app.use(require('koa-static')('view/'));
 
+// start listener
 app.listen(9000, () => {
     console.log('start server at http://localhost:9000');
+});
+
+// error handle
+app.on('error', err => {
+    console.log('error --> ', err);
+    process.exit(1);
 });
