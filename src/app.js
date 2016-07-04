@@ -4,10 +4,14 @@ const fs = require('fs');
 
 const koa = require('koa');
 const json = require('koa-json');
+const logger = require('koa-logger');
 const app = koa();
 
 // support json type response
 app.use(json());
+
+// support request log
+app.use(logger());
 
 // import all routers
 fs.readdir(__dirname + '/router', (err, result) => {
