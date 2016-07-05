@@ -38,3 +38,5 @@ app.on('error', err => {
     console.log('error --> ', err);
     process.exit(1);
 });
+
+module.exports = app;
