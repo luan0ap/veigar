@@ -16,7 +16,12 @@ watcher.on('ready', () => {
     watcher.on('add', (path) => {
         console.log('<---- watched new file add, restart server ---->');
         appIns = reload(appIns);
-    })
+    });
+
+    watcher.on('unlink', (path) => {
+        console.log('<---- watched file remove, do something ---->');
+        appIns = reload(appIns);
+    });
 });
 
 process.on('SIGINT', () => {
@@ -24,11 +29,6 @@ process.on('SIGINT', () => {
 });
 
 function reload(appIns) {
-    Object.keys(require.cache).forEach(function (id) {
-        if (/[\/\\](app)[\/\\]/.test(id)) {
-            delete require.cache[id]
-        }
-    });
     appIns.kill('SIGINT');
     return cp.fork(require('path').join(__dirname, '../src/app.js'));
 }
