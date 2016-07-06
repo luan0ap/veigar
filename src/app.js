@@ -1,6 +1,7 @@
 'use strict'
 
 const fs = require('fs');
+const config = require('../config/config.js');
 
 const koa = require('koa');
 const json = require('koa-json');
@@ -29,8 +30,8 @@ fs.readdir(__dirname + '/router', (err, result) => {
 app.use(require('koa-static')('view/'));
 
 // start listener
-app.listen(9000, () => {
-    console.log('start server at http://localhost:9000');
+app.listen(config.port, () => {
+    console.log('start server at http://localhost:' + config.port);
 });
 
 // error handle
