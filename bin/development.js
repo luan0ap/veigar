@@ -6,6 +6,9 @@ const chokidar = require('chokidar');
 const watcher = chokidar.watch(path.join(__dirname, '../src'));
 
 let appIns = cp.fork(path.join(__dirname, '../src/app.js'));
+appIns.on('exit', code => {
+    process.exit(0);
+});
 
 watcher.on('ready', () => {
     watcher.on('change', (path) => {

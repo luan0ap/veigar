@@ -2,11 +2,18 @@
 
 const fs = require('fs');
 const config = require('../config/config.js');
+const mongoose = require('mongoose');
 
 const koa = require('koa');
 const json = require('koa-json');
 const logger = require('koa-logger');
 const app = koa();
+
+// connect database
+mongoose.connect(config.database, err => {
+    console.log('connect database error -->', err);
+    process.exit(1);
+});
 
 // support json type response
 app.use(json());
