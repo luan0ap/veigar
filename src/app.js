@@ -11,8 +11,11 @@ const app = koa();
 
 // connect database
 mongoose.connect(config.database, err => {
-    console.log('connect database error -->', err);
-    process.exit(1);
+    if (err) {
+        console.log('connect database error -->', err);
+        process.exit(10601);
+    }
+    console.log('connect database success');
 });
 
 // support json type response

@@ -7,7 +7,10 @@ const watcher = chokidar.watch(path.join(__dirname, '../src'));
 
 let appIns = cp.fork(path.join(__dirname, '../src/app.js'));
 appIns.on('exit', code => {
-    process.exit(0);
+    if (code === 10601) {
+        console.log('main applicatiton connect database fail');
+        process.exit(0);
+    }
 });
 
 watcher.on('ready', () => {
