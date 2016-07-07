@@ -1,5 +1,7 @@
 'use strict'
 
+require('node-monkey').start({host: "127.0.0.1", port:"50500"});
+
 const fs = require('fs');
 const config = require('../config/config.js');
 const mongoose = require('mongoose');
