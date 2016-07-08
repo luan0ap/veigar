@@ -4,7 +4,7 @@
   "description": "A communicate website like [http://tieba.baidu.com/](http://tieba.baidu.com/)",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "export NODE_ENV=test && mocha test/*",
     "start": "export NODE_ENV=development && node bin/development.js"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "chokidar": "^1.6.0",
     "mocha": "^2.5.3",
     "request": "^2.72.0",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "supertest-koa-agent": "^0.2.1"
   }
 }

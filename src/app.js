@@ -1,6 +1,7 @@
 'use strict'
 
-if (process.env.NODE_ENV === 'development') {
+let env = process.env.NODE_ENV;
+if (env === 'development') {
     require('node-monkey').start({ host: "127.0.0.1", port:"50500" });
     require("opener")('http://127.0.0.1:50500/');
 } 
@@ -15,7 +16,7 @@ const logger = require('koa-logger');
 const app = koa();
 
 // connect database
-mongoose.connect(config.database, err => {
+mongoose.connect(env !== 'test' ? config.database : config.testDatabase, err => {
     if (err) {
         console.log('connect database error -->', err);
         process.exit(10601);
